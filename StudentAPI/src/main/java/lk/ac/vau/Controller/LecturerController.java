@@ -13,33 +13,34 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import lk.ac.vau.Model.Course;
+import lk.ac.vau.Model.Lecturer;
 import lk.ac.vau.Repo.Repo;
 
 @RestController
-@RequestMapping("/course")
+@RequestMapping("lecturer")
 @Produces(MediaType.APPLICATION_XML)
 @Consumes(MediaType.APPLICATION_XML)
-public class CourseController {
-private Repo<String,Course> courses = new Repo<String,Course>();
-	public Collection<Course>getAll(){
+public class LecturerController {
+	private Repo<Long,Lecturer> courses = new Repo<Long,Lecturer>();
+	@GetMapping
+	public Collection<Lecturer>getAll(){
 		return courses.getAll();
 	}
 	@GetMapping("/{id}")
-	 public Course get(@PathVariable("id") String id) {
+	 public Lecturer get(@PathVariable("id") Long id) {
 		return courses.get(id);
 	 }
 	
 	@PostMapping(consumes=MediaType.APPLICATION_JSON)
-	public void add(@PathVariable("id")String id, Course course){
-		courses.add(course);
+	public void add(@PathVariable("id")Long id, Lecturer lecturer){
+		courses.add(lecturer);
 	}
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable("id")String id) {
+	public void delete(@PathVariable("id")Long id) {
 		courses.delete(id);
 	}
 	@PutMapping("/{id}")
-	public void update(@PathVariable("id")String id,Course course) {
-		courses.update(id, course);
+	public void update(@PathVariable("id")Long id,Lecturer lecturer) {
+		courses.update(id, lecturer);
 	}
 }

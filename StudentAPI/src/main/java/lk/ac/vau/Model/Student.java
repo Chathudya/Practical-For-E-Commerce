@@ -3,7 +3,7 @@ package lk.ac.vau.Model;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class Student {
+public class Student extends PrimaryId<String>{
 	public String id;
 	public String name;
 	public int age;
@@ -17,12 +17,6 @@ public class Student {
 		this.age = age;
 		this.degree = degree;
 		this.gpa = gpa;
-	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
 	}
 	public String getName() {
 		return name;

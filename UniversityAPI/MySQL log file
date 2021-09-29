@@ -1,0 +1,89 @@
+MariaDB [(none)]> create database school2;
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [(none)]> use school2;
+Database changed
+MariaDB [school2]> show tables;
++------------------------+
+| Tables_in_school2      |
++------------------------+
+| course                 |
+| final_research_project |
+| lecturer               |
+| student                |
+| student_course         |
+| subject                |
+| subject_course         |
++------------------------+
+7 rows in set (0.001 sec)
+
+MariaDB [school2]> desc course;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| course_id | varchar(255) | NO   | PRI | NULL    |       |
+| name      | varchar(255) | YES  |     | NULL    |       |
+| duration  | int(11)      | NO   |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+3 rows in set (0.112 sec)
+
+MariaDB [school2]> desc student;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| student_id  | bigint(20)   | NO   | PRI | NULL    |       |
+| institute   | varchar(255) | YES  |     | NULL    |       |
+| name        | varchar(255) | YES  |     | NULL    |       |
+| course_id   | varchar(255) | YES  | MUL | NULL    |       |
+| research_id | varchar(255) | YES  | MUL | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+5 rows in set (0.302 sec)
+
+MariaDB [school2]> desc student_course;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| student_id | bigint(20)   | NO   | MUL | NULL    |       |
+| course_id  | varchar(255) | NO   | MUL | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+2 rows in set (0.012 sec)
+
+MariaDB [school2]> desc subject;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| subject_id   | varchar(255) | NO   | PRI | NULL    |       |
+| subject_name | varchar(255) | YES  |     | NULL    |       |
+| lecturer_id  | varchar(255) | YES  | MUL | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+3 rows in set (0.012 sec)
+
+MariaDB [school2]> desc subject_course;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| subject_id | varchar(255) | NO   | MUL | NULL    |       |
+| course_id  | varchar(255) | NO   | MUL | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+2 rows in set (0.013 sec)
+
+MariaDB [school2]> desc lecturer;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| lecturer_id   | varchar(255) | NO   | PRI | NULL    |       |
+| lecturer_name | varchar(255) | YES  |     | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+2 rows in set (0.012 sec)
+
+MariaDB [school2]> desc final_research_project;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| research_id | varchar(255) | NO   | PRI | NULL    |       |
+| student_id  | bigint(20)   | YES  |     | NULL    |       |
+| area        | varchar(255) | YES  |     | NULL    |       |
+| title       | varchar(255) | YES  |     | NULL    |       |
+| lecturer_id | varchar(255) | YES  | MUL | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+5 rows in set (0.018 sec)

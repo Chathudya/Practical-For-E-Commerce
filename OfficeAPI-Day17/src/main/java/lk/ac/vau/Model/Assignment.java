@@ -1,4 +1,6 @@
 package lk.ac.vau.Model;
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -7,7 +9,7 @@ import javax.persistence.ManyToOne;
 
 //worker-building
 @Entity
-public class Assignment {
+public class Assignment implements Serializable {
 	@Id
 	@GeneratedValue
 	private long id;
